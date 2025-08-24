@@ -35,13 +35,43 @@ During ETL, I solved several issues to ensure clean and reliable data:
 ---
 
 ## 📂 Repo Structure
-- SQL-portfolio/
-  - docker-compose.yml
-  - sql/  — schema & ETL SQL scripts
-  - scripts/  — Python data cleaning scripts
-  - docs/
-    - data_loading.md
-  - README.md
+## 📂 Repo Structure
+
+SQL-portfolio/  
+├── README.md                  # main project overview  
+├── .gitignore                 # keep raw data local  
+├── data/                      # raw & cleaned Yelp dataset (local only, ignored in Git)  
+│   ├── business.csv  
+│   ├── business_clean.csv  
+│   ├── checkin.csv  
+│   ├── review.csv  
+│   ├── review_clean.csv  
+│   ├── tip.csv  
+│   ├── user.csv  
+│   ├── yelp_academic_dataset_business.json  
+│   ├── yelp_academic_dataset_checkin.json  
+│   ├── yelp_academic_dataset_review.json  
+│   ├── yelp_academic_dataset_tip.json  
+│   ├── yelp_academic_dataset_user.json  
+│   └── Yelp-JSON/ ...  
+│
+├── docker/                    # Docker setup  
+│   ├── docker-compose.yml  
+│   ├── init/  
+│   └── sql/  
+│
+├── docs/                      # documentation  
+│   └── data_loading.md  
+│
+├── scripts/                   # Python data cleaning scripts  
+│   ├── businessdatafix.py  
+│   ├── to_csv.py  
+│   └── ValidateReview.py  
+│
+└── sql/                       # schema & ETL SQL scripts  
+    ├── 01_create_tables.sql  
+    └── 02_load_data.sql  
+
 
 ---
 
