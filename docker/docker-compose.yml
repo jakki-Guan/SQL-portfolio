@@ -1,0 +1,30 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: yelp_pg
+    environment:
+      POSTGRES_USER: yelp
+      POSTGRES_PASSWORD: yelp
+      POSTGRES_DB: yelp
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data     # <-- DB files (persistent)
+      - ../sql:/sql                         # <-- maps repo/sql -> /sql in container
+      - ../data:/data                       # <-- maps repo/data -> /data in container
+
+  pgadmin:
+    image: dpage/pgadmin4:8
+    container_name: yelp_pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@example.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "5050:80"
+    depends_on: [postgres]
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin       # <-- pgAdmin settings persist
+
+volumes:
+  pgdata:
+  pgadmin_data:
